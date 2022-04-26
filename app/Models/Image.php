@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Image extends Model
 {
     use HasFactory;
 
@@ -16,13 +16,11 @@ class User extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
-        'karma_score',
-        'image_id',
+        'url',
     ];
 
-    public function image()
+    public function user()
     {
-        return $this->hasOne(Image::class);
+        return $this->belongsTo(User::class);
     }
 }
