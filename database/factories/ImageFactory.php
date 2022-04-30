@@ -18,7 +18,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            'url' => $this->faker->image('public/storage/images',480,480, null, false),
+            'url' => Str::random(10).'.png',
         ];
     }
 

@@ -19,9 +19,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'username' => $this->faker->userName(),
-            'karma_score' => $this->faker->unique()->numberBetween(0, 10),
-            'image_id' => Image::factory(),
+            'username' => strtolower(Str::random(5) . '.' . Str::random(5)) ,
+            'karma_score' => $this->faker->unique()->numberBetween(0, 400000),
         ];
     }
 

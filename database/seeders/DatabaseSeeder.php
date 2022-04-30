@@ -16,8 +16,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()
-            ->count(10)
-            ->create();
+        
+            $n = 400000;
+            while($n>0){
+                try{
+                    $image = Image::factory()->create();
+                    $user = User::factory()->create();
+                    $user->image_id = $image->id;
+                    $user->save();
+                    $n--;
+                }catch(Exception $e){
+                    continue;
+                }
+            }
+
+
+
     }
 }
