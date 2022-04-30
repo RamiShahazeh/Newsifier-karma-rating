@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('v1')->group(function() {
+    Route::post('user/karma-position', [UserController::class,'get_user_position'])->name('user_positions');
+    Route::get('user/karma-position', [UserController::class,'get_user_position'])->name('get_user_positions');
 });
