@@ -4,7 +4,6 @@ namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class GetUserRequest extends FormRequest
 {
@@ -26,16 +25,12 @@ class GetUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|integer|exists:users,id'
+            'user_id' => 'required|integer',
+            'limit' => 'nullable|numeric|min:1|max:10000000'
         ];
     }
 
     protected function failedValidation(Validator $validator) { 
-        throw new HttpResponseException(
-          response()->json([
-            'success' => false,
-            'message' => $validator->errors()->first()
-          ], 400)
-        ); 
+        return redirect(route('get_user_positions'))->withErrors($validator);
     }
 }

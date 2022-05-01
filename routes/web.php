@@ -15,6 +15,10 @@ use App\Http\Controllers\UserController;
 */
 
 Route::prefix('v1')->group(function() {
-    Route::post('user/karma-position', [UserController::class,'get_user_position'])->name('user_positions');
+    Route::post('user/karma-position', [UserController::class,'post_user_position'])->name('post_user_positions');
     Route::get('user/karma-position', [UserController::class,'get_user_position'])->name('get_user_positions');
+});
+
+Route::fallback(function () {
+    return redirect()->route('get_user_positions');
 });
