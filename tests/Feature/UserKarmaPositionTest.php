@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Http\Response;
 use App\Models\User;
 
-class UserKaramPositionTest extends TestCase
+class UserKarmaPositionTest extends TestCase
 {
     public function test_if_it_returns_right_users_count()
     {
